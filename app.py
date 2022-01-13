@@ -17,7 +17,7 @@ def get_article_summary(text):
   return text_summary
 
 # Flask server
-app = Flask(__name__, static_folder='/build', static_url_path='/')
+app = Flask(__name__, static_url_path='/')
 app.config.from_object(Config)
 
 #Error handling
