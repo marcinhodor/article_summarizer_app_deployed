@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from goose3 import Goose
 import requests
 from config import Config
+import os
 
 g = Goose({'enable_image_fetching': True})
 
@@ -19,6 +20,9 @@ def get_article_summary(text):
 # Flask server
 app = Flask(__name__, static_url_path='/')
 app.config.from_object(Config)
+port = int(os.environ.get("PORT", 5000))
+if __name__ == '__main__':
+  app.run(host='0.0.0.0', port=port)
 
 #Error handling
 @app.errorhandler(Exception)
